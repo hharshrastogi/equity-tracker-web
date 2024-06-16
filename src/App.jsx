@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import axios from 'axios';
 
@@ -10,11 +8,11 @@ function App() {
   const [txnType, setTxnType] = useState("");
   const [equityName, setEquityName] = useState("");
   const [txnDate, setTxnDate] = useState("");
-  const [qunatity, setQunatity] = useState("");
+  const [quantity, setQuantity] = useState("");
   const [pricePerShare, setPricePerShare] = useState("");
-  const [totalPrice, setTotalPrice] = useState("");
+  // const [totalPrice, setTotalPrice] = useState("");
   const [targetPercentage, setTargetPercentage] = useState("");
-  const [targetAmount, setTargetAmount] = useState("");
+  // const [targetAmount, setTargetAmount] = useState("");
 
   return (
     <>
@@ -56,8 +54,8 @@ function App() {
       </label>
       <label>Enter Quantity:
         <input type="text" 
-          value={qunatity}
-          onChange={(e) => {setQunatity(e.target.value)}}
+          value={quantity}
+          onChange={(e) => {setQuantity(e.target.value)}}
         />
       </label>
       <label>Enter price per share:
@@ -66,46 +64,46 @@ function App() {
           onChange={(e) => setPricePerShare(e.target.value)}
         />
       </label>
-      <label>Enter Total Price:
+      {/* <label>Enter Total Price:
         <input type="text" 
           value={totalPrice}
           onChange={(e) => setTotalPrice(e.target.value)}
         />
-      </label>
+      </label> */}
       <label>Enter Target Percentage:
         <input type="text" defaultValue={6}
           value={targetPercentage}
           onChange={(e) => setTargetPercentage(e.target.value)}
         />
       </label>
-      <label>Enter Target Amount:
+      {/* <label>Enter Target Amount:
         <input type="text"
           value={targetAmount}
           onChange={(e) => setTargetAmount(e.target.value)}
         />
-      </label>
+      </label> */}
       </form>
-      <button onClick={()=>processTxnData()}>SUBMIT</button>
+      <button onClick={()=>processTxnData(quantity,pricePerShare,targetPercentage)}>SUBMIT</button>
     </>
   )
 
-  async function processTxnData() {
+  async function processTxnData(quantity,pricePerShare,targetPercentage) {
     var formData = {
           "broker": broker,
           "broker_account": brokerAccount,
           "transaction_type": txnType,
           "equity_name": equityName,
           "transaction_date": txnDate+"T13:30:00.000Z",
-          "quantity": parseInt(qunatity),
+          "quantity": parseInt(quantity),
           "price_per_unit": pricePerShare,
-          "total_price": totalPrice,
+          "total_price": parseInt(quantity) * parseFloat(pricePerShare),
           "target_percentage": targetPercentage,
-          "target_amount": targetAmount
+          "target_amount": parseInt(quantity) * (parseFloat(pricePerShare)* ((parseInt(targetPercentage) / 100) + 1))
     }
     
     var res = await axios.post("http://localhost:3000/transaction", formData)
-    console.log(res.data)
-    console.log(res.status)
+    console.log(res.data)  
+    console.log(res.status) 
   }
 }
 
