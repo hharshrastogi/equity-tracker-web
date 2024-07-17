@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
+import FormData from './components/FormData.jsx'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "form",
+    element: <FormData />,
   },
 ]);
 

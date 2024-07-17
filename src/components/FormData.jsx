@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios';
+import NavBar from "./NavBar";
 import { useEffect, useState } from 'react'
 
 function FormData(){
@@ -15,6 +16,7 @@ function FormData(){
     // const [targetAmount, setTargetAmount] = useState("");
         return(
             <>
+              <NavBar/>
             <form style={{"display": "flex", "flex-direction": "column"}}>
       <label>Enter your Broker:
         <input type="text" 
