@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import NavBar from "./NavBar";
+import './homepage.css'
 import { useEffect, useState } from 'react'
 
 function FormData(){
@@ -17,6 +18,7 @@ function FormData(){
         return(
             <>
               <NavBar/>
+            <div className="form-body">  
             <form style={{"display": "flex", "flex-direction": "column"}}>
       <label>Enter your Broker:
         <input type="text" 
@@ -75,7 +77,8 @@ function FormData(){
       
       </form>
       <button onClick={()=>processTxnData(quantity,pricePerShare,targetPercentage)}>SUBMIT</button>
-            </>
+      </div>      
+      </>
 
     )
     async function processTxnData(quantity,pricePerShare,targetPercentage) {

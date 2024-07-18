@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
+import FormInput from './components/FormInput.jsx';
 
 const router = createBrowserRouter([
   {
