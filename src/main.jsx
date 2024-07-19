@@ -16,7 +16,7 @@ const router = createBrowserRouter([
   },
   {
     path: "form",
-    element: <FormData />,
+    element: <FormInput />,
   },
 ]);
 

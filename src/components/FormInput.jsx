@@ -11,33 +11,61 @@ function FormInput(){
             <NavBar/>
             <form className="form-body"onSubmit={handleSubmit(onSubmit)} style={{"display": "flex", "flex-direction": "column"}}>
                 
-                    <label>
-                        Broker Name   
+                    <label className="cmn-margin">
+                        Broker Name:   
                         <input {...register("broker",{required:true})}></input>
                     </label> 
-                    <label>
-                        Broker Account
+                    <label className="cmn-margin">
+                        Broker Account:
                         <input {...register("brokerAccount",{required:true})}></input>
                     </label> 
-                    <label>
-                        Buy
+                    <label className="cmn-margin">
+                        Buy:
                         <input
+                            className="cmn-margin"
                             {...register("txnType")}    
                             type="radio"
                             value="buy"
                         />
-                        Sell
+                        Sell:
                         <input
+                            className="cmn-margin"
                             {...register("txnType")}    
                             type="radio"
                             value="sell"
                         />
-                        {/* <select {...register("txnType",{required:true})}>
-                            <option type="radio" value={"buy"}>Buy</option>
-                            <option value={"sell"}>Sell</option>
-                        </select>  */}
                     </label>
-                    <input type="submit"/>
+                    <label className="cmn-margin">
+                        Equity Name:  
+                        <input {...register("equityName",{required:true})} />
+                    </label>
+                    <label className="cmn-margin">
+                        Date:
+                        <input
+                            {...register("txnDate",{require:true})}
+                            type="date"
+                        />
+                    </label>
+                    <label className="cmn-margin">
+                        Quantity:
+                        <input
+                        {...register("quantity",{require:true})}
+                            type="number"
+                            min="0"
+                        />
+                    </label>
+                    <label className="cmn-margin">
+                        Price:
+                        <input {...register("pricePerShare",{required:true})} />
+                    </label>
+                    <label className="cmn-margin">
+                        Target Percentage:
+                        <input
+                            {...register("targetPercentage",{required:true})}
+
+                        />
+                    </label>
+                    <input className="submit-btn" type="submit"/>
                     
                 
                 
